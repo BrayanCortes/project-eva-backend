@@ -4,3 +4,4 @@ Secrets-bd.txt
 Secrets-Emanger.txt
 Secret-OpenAi.txt
 env/
+.env
