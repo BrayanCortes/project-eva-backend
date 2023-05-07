@@ -29,6 +29,7 @@ def Respues_personalizada(nombre,sadness_mesurement):
 
     prompt = f"Dile unas palabas de aliento a una persona de nombre {nombre} que tiene un nivel {nivel_tristeza} de tristeza, dependiendo del nombre ten en cuenta si es femenino o masculino."
     print(f"Perzonalized para: {nivel_tristeza} y para mi panita: {nombre}")
+    
     completions = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
