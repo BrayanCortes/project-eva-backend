@@ -2,10 +2,16 @@ import smtplib
 
 def email_sender(sadness_mesurement,student_name,student_code, email, personal_data):
     # Configura el servidor SMTP y la cuenta de correo electrónico
+
+    Lista_auth = []
+    with open("E:/Universidad/Tesis-Programacion/Proyecto-eva-Back/Secrets-Email.txt") as file_object:
+        for line in file_object:
+            Lista_auth.append(line.rstrip())
+
     servidor_smtp = 'smtp.gmail.com'
     puerto_smtp = 587
-    cuenta_correo = 'EvaChatbotUnivalle@gmail.com'
-    contraseña_correo = 'nnengvkzwwxpztyf' #Esto ira en un secretkeys, junto con el correo,
+    cuenta_correo = f'{Lista_auth[0]}'
+    contraseña_correo = f'{Lista_auth[1]}' #Esto ira en un secretkeys, junto con el correo,
 
     # Crea el objeto del servidor SMTP y haz login en la cuenta de correo electrónico
     servidor = smtplib.SMTP(servidor_smtp, puerto_smtp)

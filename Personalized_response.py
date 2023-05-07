@@ -1,8 +1,14 @@
 import openai
 
 def Respues_personalizada(nombre,sadness_mesurement):
+
+    Lista_auth = []
+
+    with open("E:/Universidad/Tesis-Programacion/Proyecto-eva-Back/Secrets-gpt.txt") as file_object:
+        for line in file_object:
+            Lista_auth.append(line.rstrip())
     
-    openai.api_key = "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"
+    openai.api_key = f'{Lista_auth[0]}'
     """
     La escala fue hecha usando la escala de tristeza o la escala de depresion de beck.
     La formula para sacar los porcentajes fue 9/60 * 100
