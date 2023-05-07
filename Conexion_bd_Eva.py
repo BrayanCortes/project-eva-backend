@@ -5,7 +5,7 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
     if personal_data == True:
         Lista_auth = []
 
-        with open("E:/Universidad/Tesis-Programacion/Proyecto-eva-Back/Secrets-bd.txt") as file_object:
+        with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/Secrets-bd.txt") as file_object:
             for line in file_object:
                 Lista_auth.append(line.rstrip())
         

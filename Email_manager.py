@@ -3,8 +3,9 @@ import smtplib
 def email_sender(sadness_mesurement,student_name,student_code, email, personal_data):
     # Configura el servidor SMTP y la cuenta de correo electrónico
 
+
     Lista_auth = []
-    with open("E:/Universidad/Tesis-Programacion/Proyecto-eva-Back/Secrets-Email.txt") as file_object:
+    with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/Secrets-Emanger.txt") as file_object:
         for line in file_object:
             Lista_auth.append(line.rstrip())
 

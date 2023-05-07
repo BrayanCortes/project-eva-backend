@@ -4,7 +4,7 @@ def Respues_personalizada(nombre,sadness_mesurement):
 
     Lista_auth = []
 
-    with open("E:/Universidad/Tesis-Programacion/Proyecto-eva-Back/Secrets-gpt.txt") as file_object:
+    with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/Secret-OpenAi.txt") as file_object:
         for line in file_object:
             Lista_auth.append(line.rstrip())
     
