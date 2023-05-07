@@ -1,18 +1,20 @@
 import mysql.connector
 from decouple import config
 
+Host = config('MYSQL_HOST')
+
 def guardar_datos(name,code_student,email, Question1, Question2, Question3, analisis, personal_data):
     status_code = {'status': 0}
     if personal_data == True:
         Lista_auth = []
 
-        with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/Secrets-bd.txt") as file_object:
+        with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/src/Secrets-bd.txt") as file_object:
             for line in file_object:
                 Lista_auth.append(line.rstrip())
         
         # Crea la conexión a la base de datos
         conexion = mysql.connector.connect(
-            host=f'{config('MYSQL_HOST')}',
+            host=f'{Host}',
             user=f'{Lista_auth[1]}',
             password=f'{Lista_auth[2]}',
             database=f'{Lista_auth[3]}'
