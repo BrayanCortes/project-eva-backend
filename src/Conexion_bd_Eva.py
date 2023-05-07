@@ -2,6 +2,9 @@ import mysql.connector
 from decouple import config
 
 Host = config('MYSQL_HOST')
+User = config('MYSQL_USER')
+Password = config('MYSQL_PASSWORD')
+DataBase = config('MYSQL_DB')
 
 def guardar_datos(name,code_student,email, Question1, Question2, Question3, analisis, personal_data):
     status_code = {'status': 0}
@@ -15,9 +18,9 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
         # Crea la conexión a la base de datos
         conexion = mysql.connector.connect(
             host=f'{Host}',
-            user=f'{Lista_auth[1]}',
-            password=f'{Lista_auth[2]}',
-            database=f'{Lista_auth[3]}'
+            user=f'{User}',
+            password=f'{Password}',
+            database=f'{DataBase}'
         )
         # Crea un cursor para ejecutar consultas SQL en la base de datos
         cursor = conexion.cursor()
