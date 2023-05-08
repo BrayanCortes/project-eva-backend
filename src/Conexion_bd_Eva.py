@@ -8,7 +8,7 @@ Password = config('MYSQL_PASSWORD')
 DataBase = config('MYSQL_DB')
 Port = config('MYSQL_PORT')
 
-async def guardar_datos(name,code_student,email, Question1, Question2, Question3, analisis, personal_data):
+def guardar_datos(name,code_student,email, Question1, Question2, Question3, analisis, personal_data):
     status_code = {'status': 0}
     if personal_data == True:
         Lista_auth = []
@@ -41,14 +41,14 @@ async def guardar_datos(name,code_student,email, Question1, Question2, Question3
             # Si el registro ya existe, muestra los datos en la aplicación Tkinter
             consulta = "UPDATE Data_Test2 SET Email = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s WHERE codigo = %s"
             valores = (email,Question1, Question2, Question3, code_student)
-            await cursor.execute(consulta, valores)
+            cursor.execute(consulta, valores)
             #print(cursor)
             print("Esta consulta ya existe y fue actualizada")
         else:
             # Si el registro no existe, ejecuta una consulta SQL INSERT para insertar los datos en la tabla correspondiente
             consulta = "INSERT INTO Data_Test2(nombre, codigo, Email, respuesta1, respuesta2, respuesta3, resultados) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             valores = (name, code_student,email, Question1, Question2, Question3,analisis)
-            await cursor.execute(consulta, valores)
+            cursor.execute(consulta, valores)
             #print(cursor)
             print("sORRY BRO ESE USER NO EXISTE Y POR ENDE NO HAY UPDATE, pero si creacion mi socio, revise la bd y veras que lo cree")
 
