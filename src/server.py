@@ -5,6 +5,7 @@ from Conexion_IBM_NLU import ibm_analize_text
 from Conexion_bd_Eva import guardar_datos
 from Email_manager import email_sender
 from Personalized_response import Respues_personalizada
+import asyncio
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
