@@ -1,6 +1,10 @@
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, EmotionOptions
+from decouple import config
+
+Ibm_key = config('IBM_KEY')
+Ibm_url = config('IBM_URL')
 
 #Consumo los secrets
 ####Advertencia se debe entrar a ibm a diario a cambiar credenciales porque se actualizan
@@ -17,13 +21,13 @@ def ibm_analize_text(translate_text):
     #print(Lista_auth[1])
 
     # CREDENCIALES DE IBM NLU
-    authenticator = IAMAuthenticator(f'{Lista_auth[0]}')
+    authenticator = IAMAuthenticator(f'{Ibm_key}')
     nlu = NaturalLanguageUnderstandingV1(
         version='2021-09-01',
         authenticator=authenticator
     )
 
-    nlu.set_service_url(f'{Lista_auth[1]}')
+    nlu.set_service_url(f'{Ibm_url}')
 
     # Main function.
     print(translate_text)

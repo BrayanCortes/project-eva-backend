@@ -1,4 +1,7 @@
 import openai
+from decouple import config
+
+gpt_key = config('GPT_KEY')
 
 def Respues_personalizada(nombre,sadness_mesurement):
 
@@ -8,7 +11,7 @@ def Respues_personalizada(nombre,sadness_mesurement):
         for line in file_object:
             Lista_auth.append(line.rstrip())
     
-    openai.api_key = f'{Lista_auth[0]}'
+    openai.api_key = f'{gpt_key}'
     """
     La escala fue hecha usando la escala de tristeza o la escala de depresion de beck.
     La formula para sacar los porcentajes fue 9/60 * 100

@@ -1,4 +1,9 @@
 import smtplib
+from decouple import config
+
+emailEva = config('EMAIL')
+passemail = config('EMAIL_KEY')
+
 
 def email_sender(sadness_mesurement,student_name,student_code, email, personal_data):
     # Configura el servidor SMTP y la cuenta de correo electrónico
@@ -11,8 +16,8 @@ def email_sender(sadness_mesurement,student_name,student_code, email, personal_d
 
     servidor_smtp = 'smtp.gmail.com'
     puerto_smtp = 587
-    cuenta_correo = f'{Lista_auth[0]}'
-    contraseña_correo = f'{Lista_auth[1]}' #Esto ira en un secretkeys, junto con el correo,
+    cuenta_correo = f'{emailEva}'
+    contraseña_correo = f'{passemail}' #Esto ira en un secretkeys, junto con el correo,
 
     # Crea el objeto del servidor SMTP y haz login en la cuenta de correo electrónico
     servidor = smtplib.SMTP(servidor_smtp, puerto_smtp)
