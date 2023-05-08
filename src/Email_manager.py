@@ -20,7 +20,7 @@ def email_sender(sadness_mesurement,student_name,student_code, email, personal_d
 
     #Seteo de correos Bienestar y estudiante
     correo_bienestar = 'PruebasProyectoEvaBienestar@gmail.com'
-    correo_estudiante = ''
+    correo_estudiante = email
 
     if personal_data == True:
         #Si el nivel de tristeza esta entre 31 y 100 se remite a psicologia
@@ -33,13 +33,13 @@ def email_sender(sadness_mesurement,student_name,student_code, email, personal_d
         #Si el nivel de tristeza esta entre 0 y 30.99 solo se le escribe al estudiante
         elif sadness_mesurement >= 0  and sadness_mesurement <= 30.99:
             # Crea el mensaje de correo electrónico
-            para = 'SoyUnEstudianteDePrueba@gmail.com'
+            para = f'{correo_estudiante}'
             asunto = f'Hola {student_name} '
             cuerpo = f'Hola, esta es una respuesta automatica del Chatbot Eva, veo que tus niveles de tristeza son de {sadness_mesurement}%, si lo deseas intenta comunicarte con bienestar universitario usando el correo {correo_bienestar} y cuentales de tus resultados o acercate a la sede victoria de la universidad del valle.'
             mensaje = f'Subject: {asunto}\n\n{cuerpo}'
         # Envía el correo electrónico
     else:
-        para = 'SoyUnEstudianteDePrueba@gmail.com'
+        para = f'{correo_estudiante}'
         asunto = f'Hola {student_name} '
         cuerpo = f'Hola, esta es una respuesta automatica del Chatbot Eva, veo que tus niveles de tristeza son de {sadness_mesurement}%, si lo deseas intenta comunicarte con bienestar universitario usando el correo {correo_bienestar} y cuentales de tus resultados o acercate a la sede victoria de la universidad del valle.'
         mensaje = f'Subject: {asunto}\n\n{cuerpo}'
