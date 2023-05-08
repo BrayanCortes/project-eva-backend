@@ -2,6 +2,7 @@ import mysql.connector
 from decouple import config
 import asyncio
 
+#Variables de entorno
 Host = config('MYSQL_HOST')
 User = config('MYSQL_USER')
 Password = config('MYSQL_PASSWORD')
@@ -11,11 +12,6 @@ Port = config('MYSQL_PORT')
 def guardar_datos(name,code_student,email, Question1, Question2, Question3, analisis, personal_data):
     status_code = {'status': 0}
     if personal_data == True:
-        Lista_auth = []
-
-        with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/src/Secrets-bd.txt") as file_object:
-            for line in file_object:
-                Lista_auth.append(line.rstrip())
         
         # Crea la conexión a la base de datos
         conexion = mysql.connector.connect(
@@ -39,18 +35,16 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
         print(registro)
         if registro:
             # Si el registro ya existe, muestra los datos en la aplicación Tkinter
-            consulta = "UPDATE Data_Test2 SET Email = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s WHERE codigo = %s"
-            valores = (email,Question1, Question2, Question3, code_student)
+            consulta = "UPDATE Data_Test2 SET Email = %s, nombre = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s WHERE codigo = %s"
+            valores = (email,name,Question1, Question2, Question3, code_student)
             cursor.execute(consulta, valores)
-            #print(cursor)
-            print("Esta consulta ya existe y fue actualizada")
+            print(f"Update Student with code:{code_student} and Name:{name}")
         else:
             # Si el registro no existe, ejecuta una consulta SQL INSERT para insertar los datos en la tabla correspondiente
             consulta = "INSERT INTO Data_Test2(nombre, codigo, Email, respuesta1, respuesta2, respuesta3, resultados) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             valores = (name, code_student,email, Question1, Question2, Question3,analisis)
             cursor.execute(consulta, valores)
-            #print(cursor)
-            print("sORRY BRO ESE USER NO EXISTE Y POR ENDE NO HAY UPDATE, pero si creacion mi socio, revise la bd y veras que lo cree")
+            print(f"Insert Student with Name:{name} and Code:{code_student}")
 
         # Confirma los cambios en la base de datos
         conexion.commit()
@@ -62,7 +56,7 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
         cursor.close()
         conexion.close()
     else:
-        print(f"No hay autorizacion para el uso de datos personales {personal_data}")
+        print(f"Data use authorization denied: {personal_data}")
         status_code['status'] = 200
         print(status_code)
     

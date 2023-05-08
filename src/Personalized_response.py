@@ -1,22 +1,17 @@
 import openai
 from decouple import config
 
+#Variables de entorno
 gpt_key = config('GPT_KEY')
 
 def Respues_personalizada(nombre,sadness_mesurement):
-
-    Lista_auth = []
-
-    with open("E:/Universidad/Tesis-programacion-back-unicamente/Proyecto-eva-Back/src/Secret-OpenAi.txt") as file_object:
-        for line in file_object:
-            Lista_auth.append(line.rstrip())
-    
+  
     openai.api_key = f'{gpt_key}'
     """
     La escala fue hecha usando la escala de tristeza o la escala de depresion de beck.
     La formula para sacar los porcentajes fue 9/60 * 100
     """
-
+    #Escala de tristeza y depresion de beck.
     nivel_tristeza = ""
     if sadness_mesurement <= 15.99:
         nivel_tristeza = "0"
@@ -31,8 +26,9 @@ def Respues_personalizada(nombre,sadness_mesurement):
 
 
     prompt = f"Dile unas palabas de aliento a una persona de nombre {nombre} que tiene un nivel {nivel_tristeza} de tristeza, dependiendo del nombre ten en cuenta si es femenino o masculino."
-    print(f"Perzonalized para: {nivel_tristeza} y para mi panita: {nombre}")
+    print("Response incoming")
     
+    #Envio del prompt a la api de OpenIA
     completions = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
@@ -41,6 +37,8 @@ def Respues_personalizada(nombre,sadness_mesurement):
         stop=None,
         temperature=0.8,
     )
+
+    #Respuesta de la Api de OpenIA
     respuesta = completions.choices[0].text
     
     return respuesta
