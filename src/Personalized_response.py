@@ -14,7 +14,7 @@ def Respues_personalizada(nombre,sadness_mesurement):
     #Escala de tristeza y depresion de beck.
     nivel_tristeza = ""
     if sadness_mesurement <= 15.99:
-        nivel_tristeza = "0"
+        nivel_tristeza = "bajo"
     elif sadness_mesurement >= 16 and sadness_mesurement <= 30.99:
         nivel_tristeza = "medio-bajo"
     elif sadness_mesurement >= 31 and sadness_mesurement <= 49.99:
