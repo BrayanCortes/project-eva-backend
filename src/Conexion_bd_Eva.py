@@ -28,14 +28,12 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
         consulta = "SELECT * FROM Data_Test2 WHERE codigo = %s AND nombre =%s"
         valores = (code_student, name)
         cursor.execute(consulta, valores)
-
         # Recupera los datos del registro si ya existe
         registro = cursor.fetchone()
-        """fetchone() busca en la base de datos si existe el usuario con esas caracteristicas, imagino que se le puede pasar el userID"""
         print(registro)
         if registro:
             # Si el registro ya existe, muestra los datos en la aplicación Tkinter
-            consulta = "UPDATE Data_Test2 SET Email = %s, nombre = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s, resultados =%s WHERE codigo = %s"
+            consulta = "UPDATE Data_Test2 SET Email = %s, nombre = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s, resultados = %s WHERE codigo = %s"
             valores = (email,name,Question1, Question2, Question3, code_student,analisis)
             cursor.execute(consulta, valores)
             print(f"Update Student with code:{code_student} and Name:{name}")
@@ -45,10 +43,8 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
             valores = (name, code_student,email, Question1, Question2, Question3,analisis)
             cursor.execute(consulta, valores)
             print(f"Insert Student with Name:{name} and Code:{code_student}")
-
         # Confirma los cambios en la base de datos
         conexion.commit()
-
         status_code['status'] = 200
         print(status_code)
 
