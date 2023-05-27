@@ -34,7 +34,7 @@ def guardar_datos(name,code_student,email, Question1, Question2, Question3, anal
         if registro:
             # Si el registro ya existe, muestra los datos en la aplicación Tkinter
             consulta = "UPDATE Data_Test2 SET Email = %s, nombre = %s, respuesta1 = %s, respuesta2 = %s, respuesta3 = %s, resultados = %s WHERE codigo = %s"
-            valores = (email,name,Question1, Question2, Question3, code_student,analisis)
+            valores = (email,name,Question1, Question2, Question3,analisis,code_student)
             cursor.execute(consulta, valores)
             print(f"Update Student with code:{code_student} and Name:{name}")
         else:
