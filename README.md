@@ -3,10 +3,10 @@
 Este proyecto fue desarrollado por Brayan Alejandro Cortes Jimenez, como tesis para optar por el grado de ingeniero de sistemas de la universidad del Valle.
 
 ## Instalacion de dependencias
-Si se desea desplegar de manera local el codigo, primero se deben instalar las dependencias las cuales estan ubicadas en requirements.txt, para instalarlas ubiquese sobre la carpeta raiz del proyecto y utilice el siguiente comando
-  
+Si se desea desplegar de manera local el codigo, primero se deben instalar las dependencias las cuales estan ubicadas en requirements.txt, para instalarlas ubiquese sobre la carpeta raiz del proyecto y utilice el siguiente comando:
+
   pip install -r requirements.txt
-  
+
 De esta manera todas las dependencias seran instaladas en su equipo.
 
 ## Tener en cuenta:
