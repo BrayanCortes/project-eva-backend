@@ -25,7 +25,7 @@ def Respues_personalizada(nombre,sadness_mesurement):
         nivel_tristeza = "alto"
 
 
-    prompt = f"Dile unas palabas de aliento a una persona de nombre {nombre} que tiene un nivel {nivel_tristeza} de tristeza, dependiendo del nombre ten en cuenta si es femenino o masculino."
+    prompt = f"Dile unas palabras de aliento a una persona de nombre {nombre} que tiene un nivel {nivel_tristeza} de tristeza, dependiendo del nombre ten en cuenta si es femenino o masculino."
     print("Response incoming")
     
     #Envio del prompt a la api de OpenIA
